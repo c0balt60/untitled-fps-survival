@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "build": "rbxtsc",
     "watch": "rbxtsc -w",
     "prepare": "husky"
@@ -12,6 +14,11 @@
   "author": "c0balt60",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@eslint-react/eslint-plugin": "1.53.1",
+    "@isentinel/eslint-config": "^3.3.0",
+    "@isentinel/tsconfig": "^1.0.0",
     "@rbxts/compiler-types": "^2.3.0-types.1",
     "@rbxts/types": "^1.0.777",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
@@ -19,11 +26,15 @@
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react-roblox-hooks": "5.1.0-rbx.1",
     "eslint-plugin-roblox-ts": "^0.0.30",
     "husky": "^9.1.7",
+    "jiti": "^2.6.1",
     "prettier": "^2.3.2",
+    "rbxts-build": "^2.4.3",
     "rbxts-transformer-flamework": "^1.2.2",
     "roblox-ts": "^2.3.0",
+    "ts-plugin-sort-import-suggestions": "^1.0.4",
     "typescript": "~5.2.2"
   },
   "dependencies": {
@@ -45,6 +56,7 @@
     "@rbxts/services": "^1.5.5",
     "@rbxts/sift": "^0.0.11",
     "@rbxts/t": "^3.2.1",
-    "@rbxts/ui-labs": "^2.4.1"
+    "@rbxts/ui-labs": "^2.4.1",
+    "rbxts-transform-debug": "^2.2.0"
   }
 }

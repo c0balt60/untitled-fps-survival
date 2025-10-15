@@ -1,33 +1,44 @@
 {
+	"extends": "@isentinel/tsconfig/roblox",
 	"compilerOptions": {
 		// required
-		"allowSyntheticDefaultImports": true,
-		"downlevelIteration": true,
-		"jsx": "react",
-		"jsxFactory": "Roact.createElement",
-		"jsxFragmentFactory": "Roact.createFragment",
-		"module": "commonjs",
-		"moduleResolution": "Node",
-		"noLib": true,
-		"resolveJsonModule": true,
-		"forceConsistentCasingInFileNames": true,
-		"moduleDetection": "force",
-		"strict": true,
-		"target": "ESNext",
+		// "allowSyntheticDefaultImports": true,
+		// "downlevelIteration": true,
+		// "jsx": "react",
+		// "jsxFactory": "React.createElement",
+		// "jsxFragmentFactory": "React.createFragment",
+		// "module": "commonjs",
+		// "moduleResolution": "Node",
+		// "resolveJsonModule": true,
+		// "forceConsistentCasingInFileNames": true,
+		// "moduleDetection": "force",
+		// "strict": true,
+		// "target": "ESNext",
 		"typeRoots": ["node_modules/@rbxts", "node_modules/@flamework"],
 
-		// configurable
-		"rootDir": "src",
-		"outDir": "out",
-		"baseUrl": "src",
-		"incremental": true,
-		"tsBuildInfoFile": "out/tsconfig.tsbuildinfo",
+		// "noUncheckedIndexedAccess": true,
+		// "noImplicitReturns": true,
+		// "noFallthroughCasesInSwitch": true,
 
-		"experimentalDecorators": true,
+		// configurable
+		//"rootDir": "src",
+		//"outDir": "out",
+		//"baseUrl": "src",
+		//"incremental": true,
+		//"tsBuildInfoFile": "out/tsconfig.tsbuildinfo",
+
+		//"experimentalDecorators": true,
 		"plugins": [
 			{
 				"transform": "rbxts-transformer-flamework",
 				"obfuscation": false
+			},
+			{
+				"transform": "rbxts-transform-debug"
+			},
+			{
+				"name": "ts-plugin-sort-import-suggestions",
+				"moveDownPatterns": ["@rbxts"]
 			}
 		]
 	}
