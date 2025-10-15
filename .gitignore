@@ -15,5 +15,3 @@ sourcemap.json
 *.rbxlx
 
 .env
-
-.vscode
