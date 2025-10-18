@@ -2,6 +2,7 @@ import isentinel from "@isentinel/eslint-config";
 
 export default isentinel({
 	name: "project/base",
+	files: ["**/src/*.ts"],
 	flawless: true,
 	perfectionist: {
 		customClassGroups: [
