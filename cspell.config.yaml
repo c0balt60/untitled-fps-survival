@@ -1,3 +1,4 @@
+language: en
 words:
   - darklua
   - Lerps
@@ -8,3 +9,8 @@ words:
   - uisizeconstraint
   - dorem
   - offwhite
+  - flamework
+  - rbxts
+  - rbxtsc
+  - isentinel
+  - flamework

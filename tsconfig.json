@@ -20,9 +20,6 @@
 		"strict": true,
 		"allowUnreachableCode": false,
 		"exactOptionalPropertyTypes": true,
-		// required
-		"allowSyntheticDefaultImports": true,
-		"downlevelIteration": true,
 
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitOverride": true,
@@ -30,7 +27,10 @@
 		"noPropertyAccessFromIndexSignature": true,
 		"noUncheckedIndexedAccess": true,
 		"useUnknownInCatchVariables": true,
+		"downlevelIteration": true,
 		"outDir": "out",
+		// required
+		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
 		"skipLibCheck": true,
 		"plugins": [

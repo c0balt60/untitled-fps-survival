@@ -4,7 +4,15 @@ export default isentinel({
 	name: "project/base",
 	flawless: true,
 	perfectionist: {
-		customClassGroups: ["onInit", "onStart", "onPlayerJoin", "onPlayerLeave", "onRender", "onPhysics", "onTick"],
+		customClassGroups: [
+			"onInit",
+			"onStart",
+			"onPlayerJoin",
+			"onPlayerLeave",
+			"onRender",
+			"onPhysics",
+			"onTick",
+		],
 		sortObjects: {
 			customGroups: {
 				id: "^id$",
@@ -19,6 +27,19 @@ export default isentinel({
 	pnpm: true,
 	react: true,
 	rules: {
+		"@cspell/spellchecker": [
+			"warn",
+			{
+				autoFix: true,
+				cspell: {
+					allowCompoundWords: true,
+					enabled: true,
+				},
+				customWordListFile: "cspell.config.yaml",
+				generateSuggestions: true,
+				numSuggestions: 100,
+			},
+		],
 		"flawless/naming-convention": [
 			"off",
 			{
@@ -26,6 +47,8 @@ export default isentinel({
 				selector: ["variable"],
 			},
 		],
+		"package-json/no-empty-fields": ["off"],
+		"package-json/order-properties": ["off"],
 	},
 	spellCheck: true,
 	type: "game",
