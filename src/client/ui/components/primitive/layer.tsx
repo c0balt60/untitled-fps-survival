@@ -47,9 +47,16 @@ export default function Layer({
 	children,
 }: Readonly<LayerProps>): React.ReactNode {
 	return IS_EDIT ? (
-		<Group>{clampUltraWide ? <UltraWideContainer>{children}</UltraWideContainer> : children}</Group>
+		<Group>
+			{clampUltraWide ? <UltraWideContainer>{children}</UltraWideContainer> : children}
+		</Group>
 	) : (
-		<screengui DisplayOrder={displayOrder} IgnoreGuiInset={true} ResetOnSpawn={false} ZIndexBehavior="Sibling">
+		<screengui
+			DisplayOrder={displayOrder}
+			IgnoreGuiInset={true}
+			ResetOnSpawn={false}
+			ZIndexBehavior="Sibling"
+		>
 			{clampUltraWide ? <UltraWideContainer>{children}</UltraWideContainer> : children}
 		</screengui>
 	);

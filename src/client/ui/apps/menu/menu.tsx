@@ -7,17 +7,17 @@ import { Transition } from "client/ui/components/widgets/transition";
 
 import { Home } from "./home";
 
-interface MenuProps {
-	title?: string;
+interface IMenu {
+	readonly title?: string;
 }
 
 /**
  * Menu wrapper.
  *
- * @param
- * @returns
+ * @param _props -properties.
+ * @returns -A react menu.
  */
-export function Menu(): React.ReactNode {
+export function Menu(_props: IMenu): React.ReactNode {
 	// TODO: Incorporate reflex store & state control
 
 	const [transition, transitionMotion] = useMotion(0);
@@ -26,8 +26,9 @@ export function Menu(): React.ReactNode {
 	const visible = true;
 
 	useEffect(() => {
+		// eslint-disable-next-line ts/no-unnecessary-condition -- temporary disable
 		transitionMotion.spring(visible ? 1 : 0, springs.gentle);
-	}, [visible]);
+	}, [visible, transitionMotion]);
 
 	return (
 		<DelayRender shouldRender={true} unmountDelay={1}>

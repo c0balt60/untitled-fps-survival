@@ -29,20 +29,22 @@ export interface ImageProps extends PropsWithChildren {
  *
  * @see https://developer.roblox.com/en-us/api-reference/class/ImageLabel
  */
-const Image = forwardRef(({ CornerRadius, Image, children }: ImageProps, ref: React.Ref<ImageLabel>) => {
-	return (
-		<imagelabel
-			ref={ref}
-			AnchorPoint={new Vector2(0.5, 0.5)}
-			BackgroundTransparency={1}
-			Image={Image}
-			Position={new UDim2(0.5, 0, 0.5, 0)}
-			Size={new UDim2(1, 0, 1, 0)}
-		>
-			{CornerRadius ? <uicorner CornerRadius={CornerRadius} /> : undefined}
-			{children}
-		</imagelabel>
-	);
-});
+const Image = forwardRef(
+	({ CornerRadius, Image, children }: ImageProps, ref: React.Ref<ImageLabel>) => {
+		return (
+			<imagelabel
+				ref={ref}
+				AnchorPoint={new Vector2(0.5, 0.5)}
+				BackgroundTransparency={1}
+				Image={Image}
+				Position={new UDim2(0.5, 0, 0.5, 0)}
+				Size={new UDim2(1, 0, 1, 0)}
+			>
+				{CornerRadius ? <uicorner CornerRadius={CornerRadius} /> : undefined}
+				{children}
+			</imagelabel>
+		);
+	},
+);
 
 export default Image;

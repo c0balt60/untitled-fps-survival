@@ -7,7 +7,12 @@ interface DelayRenderProps extends React.PropsWithChildren {
 	unmountDelay?: number;
 }
 
-export function DelayRender({ mountDelay = 0, shouldRender, unmountDelay = 0, children }: DelayRenderProps) {
+export function DelayRender({
+	mountDelay = 0,
+	shouldRender,
+	unmountDelay = 0,
+	children,
+}: DelayRenderProps) {
 	const [render, setRender] = useState(false);
 
 	useEffect(() => {

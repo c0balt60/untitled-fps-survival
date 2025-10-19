@@ -5,7 +5,10 @@ import type { Motion, MotionGoal } from "@rbxts/ripple";
 import { createMotion } from "@rbxts/ripple";
 import { RunService } from "@rbxts/services";
 
-export function useMotion<T = number>(goal: number, mapper?: (value: number) => T): LuaTuple<[Binding<T>, Motion]>;
+export function useMotion<T = number>(
+	goal: number,
+	mapper?: (value: number) => T,
+): LuaTuple<[Binding<T>, Motion]>;
 
 export function useMotion<T extends MotionGoal, U = T>(
 	goal: T,

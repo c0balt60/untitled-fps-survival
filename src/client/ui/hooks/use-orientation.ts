@@ -9,7 +9,9 @@ export function useOrientation(): Orientation {
 	});
 
 	const [orientation, setOrientation] = useState<Orientation>(
-		viewportBinding.map((viewport) => (viewport.Y > viewport.X ? "portrait" : "landscape")).getValue(),
+		viewportBinding
+			.map((viewport) => (viewport.Y > viewport.X ? "portrait" : "landscape"))
+			.getValue(),
 	);
 
 	return orientation;

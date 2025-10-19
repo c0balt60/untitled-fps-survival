@@ -44,7 +44,12 @@ export default function Layer({ displayOrder, children }: Readonly<LayerProps>):
 	return IS_EDIT ? (
 		<Group>{children}</Group>
 	) : (
-		<screengui DisplayOrder={displayOrder} IgnoreGuiInset={true} ResetOnSpawn={false} ZIndexBehavior="Sibling">
+		<screengui
+			DisplayOrder={displayOrder}
+			IgnoreGuiInset={true}
+			ResetOnSpawn={false}
+			ZIndexBehavior="Sibling"
+		>
 			{children}
 		</screengui>
 	);

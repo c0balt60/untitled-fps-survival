@@ -28,7 +28,10 @@ interface CanvasGroupProps extends PropsWithChildren {
  * @see https://developer.roblox.com/en-us/api-reference/class/CanvasGroup
  */
 const CanvasGroup = forwardRef(
-	({ CornerRadius, Visible = true, children }: Readonly<CanvasGroupProps>, ref: React.Ref<CanvasGroup>) => {
+	(
+		{ CornerRadius, Visible = true, children }: Readonly<CanvasGroupProps>,
+		ref: React.Ref<CanvasGroup>,
+	) => {
 		return (
 			<canvasgroup
 				ref={ref}

@@ -6,5 +6,9 @@ import { ScalerContext } from "client/ui/context/scaler-context";
 import { BASE_RESOLUTION } from "shared/constants/resolution";
 
 export function ScaleProvider({ children }: PropsWithChildren) {
-	return <ScalerContext.Provider value={useScaler(BASE_RESOLUTION)}>{children}</ScalerContext.Provider>;
+	return (
+		<ScalerContext.Provider value={useScaler(BASE_RESOLUTION)}>
+			{children}
+		</ScalerContext.Provider>
+	);
 }

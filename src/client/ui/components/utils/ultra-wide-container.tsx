@@ -18,14 +18,19 @@ type UltraWideContainerProps = React.PropsWithChildren;
  * @returns The rendered container component.
  * @see https://github.com/Quenty/NevermoreEngine/tree/a9256cab3584bea4bd32c327d00b9a52f2a3ec95/src/ultrawidecontainerutils
  */
-export default function UltraWideContainer({ children }: Readonly<UltraWideContainerProps>): React.ReactNode {
+export default function UltraWideContainer({
+	children,
+}: Readonly<UltraWideContainerProps>): React.ReactNode {
 	const viewport = useViewport();
 
 	return (
 		<Group>
 			<uisizeconstraint
 				MaxSize={viewport.map((size) => {
-					const resolution = new Vector2(math.min(size.X, size.Y * MAX_ASPECT_RATIO), size.Y);
+					const resolution = new Vector2(
+						math.min(size.X, size.Y * MAX_ASPECT_RATIO),
+						size.Y,
+					);
 					const scale = resolution.Magnitude / BASE_RESOLUTION.Magnitude;
 					const desktop = resolution.X > resolution.Y || scale >= 1;
 					if (!desktop) {

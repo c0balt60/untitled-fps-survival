@@ -6,7 +6,10 @@ import { RunService } from "@rbxts/services";
 
 export function useSpring(goal: Binding<number> | number, options?: SpringOptions): Binding<number>;
 
-export function useSpring<T extends MotionGoal>(goal: Binding<T> | T, options?: SpringOptions): Binding<T>;
+export function useSpring<T extends MotionGoal>(
+	goal: Binding<T> | T,
+	options?: SpringOptions,
+): Binding<T>;
 
 export function useSpring(goal: Binding<MotionGoal> | MotionGoal, options?: SpringOptions) {
 	const [binding, motion] = useMotion(getBindingValue(goal));
