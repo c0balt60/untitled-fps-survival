@@ -2,18 +2,9 @@ import isentinel from "@isentinel/eslint-config";
 
 export default isentinel({
 	name: "project/base",
-	files: ["**/src/*.ts"],
 	flawless: true,
 	perfectionist: {
-		customClassGroups: [
-			"onInit",
-			"onStart",
-			"onPlayerJoin",
-			"onPlayerLeave",
-			"onRender",
-			"onPhysics",
-			"onTick",
-		],
+		customClassGroups: ["onInit", "onStart", "onPlayerJoin", "onPlayerLeave", "onRender", "onPhysics", "onTick"],
 		sortObjects: {
 			customGroups: {
 				id: "^id$",
@@ -27,5 +18,15 @@ export default isentinel({
 	},
 	pnpm: true,
 	react: true,
+	rules: {
+		"flawless/naming-convention": [
+			"off",
+			{
+				format: ["StrictPascalCase"],
+				selector: ["variable"],
+			},
+		],
+	},
+	spellCheck: true,
 	type: "game",
 });

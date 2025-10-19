@@ -1,41 +1,38 @@
 {
-	"include": ["src/**/*", "/**/*.ts", "**/*/*.tsx"],
-	"exclude": ["node_modules", "out", "/**/*./"],
 	"compilerOptions": {
-		// required
-		"allowSyntheticDefaultImports": true,
-		"allowUnreachableCode": false,
-		"exactOptionalPropertyTypes": true,
-		"downlevelIteration": true,
+		"incremental": true,
+		"tsBuildInfoFile": "out/tsconfig.tsbuildinfo",
+		"target": "ESNext",
 		"jsx": "react",
 		"jsxFactory": "React.createElement",
 		"jsxFragmentFactory": "React.createFragment",
+		"moduleDetection": "force",
+		"noLib": true,
+
+		"experimentalDecorators": true,
+		"baseUrl": "src",
+		// configurable
+		"rootDir": "src",
 		"module": "commonjs",
 		"moduleResolution": "Node",
 		"resolveJsonModule": true,
-		"forceConsistentCasingInFileNames": true,
-		"moduleDetection": "force",
-		"strict": true,
-		"noLib": true,
-		"skipLibCheck": true,
-		"target": "ESNext",
 		"typeRoots": ["node_modules/@rbxts", "node_modules/@flamework"],
+		"strict": true,
+		"allowUnreachableCode": false,
+		"exactOptionalPropertyTypes": true,
+		// required
+		"allowSyntheticDefaultImports": true,
+		"downlevelIteration": true,
 
-		"noUncheckedIndexedAccess": true,
-		"noImplicitReturns": true,
-		"noImplicitOverride": true,
 		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
 		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
 		"useUnknownInCatchVariables": true,
-
-		// configurable
-		"rootDir": "src",
 		"outDir": "out",
-		"baseUrl": "src",
-		"incremental": true,
-		"tsBuildInfoFile": "out/tsconfig.tsbuildinfo",
-
-		"experimentalDecorators": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
 		"plugins": [
 			{
 				"name": "ts-plugin-sort-import-suggestions",
@@ -47,4 +44,6 @@
 			}
 		]
 	},
+	"include": ["src/**/*", "/**/*.ts", "**/*/*.tsx"],
+	"exclude": ["node_modules", "out", "/**/*./"]
 }
