@@ -148,7 +148,7 @@ catalogs:
       specifier: ^2.3.0
       version: 2.3.0
     ts-plugin-sort-import-suggestions:
-      specifier: ^1.0.4
+      specifier: 'catalog:'
       version: 1.0.4
     typescript:
       specifier: ^5.5.3

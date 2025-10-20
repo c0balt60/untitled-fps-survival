@@ -46,7 +46,7 @@ catalog:
   rbxts-transform-debug: ^2.2.0
   rbxts-transformer-flamework: ^1.2.2
   roblox-ts: ^2.3.0
-  ts-plugin-sort-import-suggestions: ^1.0.4
+  ts-plugin-sort-import-suggestions: 1.0.4
   typescript: ^5.5.3
 
 onlyBuiltDependencies:
