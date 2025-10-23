@@ -5,19 +5,17 @@ import { springs } from "client/constants/spring";
 import { DelayRender } from "client/ui/components";
 import { Transition } from "client/ui/components/widgets/transition";
 
-import { Home } from "./home";
-
-interface IMenu {
-	readonly title?: string;
+interface MenuProps {
+	// title: string;
 }
 
 /**
  * Menu wrapper.
  *
- * @param _props -properties.
- * @returns -A react menu.
+ * @param _props - properties.
+ * @returns A react menu.
  */
-export function Menu(_props: IMenu): React.ReactNode {
+export function Menu(_props?: Readonly<MenuProps>): React.ReactNode {
 	// TODO: Incorporate reflex store & state control
 
 	const [transition, transitionMotion] = useMotion(0);
@@ -37,9 +35,7 @@ export function Menu(_props: IMenu): React.ReactNode {
 				groupTransparency={lerpBinding(transition, 1, 0)}
 				position={lerpBinding(transition, transitionFrom, new UDim2())}
 				size={new UDim2(1, 0, 1, 0)}
-			>
-				<Home />
-			</Transition>
+			/>
 		</DelayRender>
 	);
 }

@@ -15,7 +15,7 @@ interface ReadmeProps extends PropsWithChildren {
 	text?: string;
 }
 /** We create a react component */
-function Component({ text }: ReadmeProps) {
+function _Component({ text }: Readonly<ReadmeProps>): React.ReactNode {
 	return (
 		<textlabel
 			AnchorPoint={new Vector2(0.5, 0.5)}

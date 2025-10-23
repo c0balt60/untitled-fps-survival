@@ -1,5 +1,5 @@
 import { map, useCamera, useDebounceState, useEventListener } from "@rbxts/pretty-react-hooks";
-import React, { createContext, useEffect } from "@rbxts/react";
+import React, { createContext, useCallback, useEffect } from "@rbxts/react";
 
 export interface RemProviderProps extends React.PropsWithChildren {
 	baseRem?: number;
@@ -22,11 +22,11 @@ export function RemProvider({
 	minimumRem = MIN_REM,
 	remOverride,
 	children,
-}: RemProviderProps) {
+}: Readonly<RemProviderProps>): React.ReactNode {
 	const camera = useCamera();
 	const [rem, setRem] = useDebounceState(baseRem, { leading: true, wait: 0.2 });
 
-	const update = () => {
+	const update = useCallback((): number | undefined => {
 		const viewport = camera.ViewportSize;
 
 		if (remOverride !== undefined) {
@@ -45,13 +45,15 @@ export function RemProvider({
 		const factor = desktop ? scale : map(scale, 0, 1, 0.25, 1);
 
 		setRem(math.clamp(math.round(baseRem * factor), minimumRem, maximumRem));
-	};
+
+		return undefined;
+	}, [camera, setRem, baseRem, minimumRem, maximumRem, remOverride]);
 
 	useEventListener(camera.GetPropertyChangedSignal("ViewportSize"), update);
 
 	useEffect(() => {
 		update();
-	}, [baseRem, minimumRem, maximumRem, remOverride]);
+	}, [baseRem, minimumRem, maximumRem, remOverride, update]);
 
 	return <RemContext.Provider value={rem}>{children}</RemContext.Provider>;
 }

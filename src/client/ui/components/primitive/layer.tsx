@@ -43,7 +43,7 @@ export interface LayerProps extends React.PropsWithChildren {
  */
 export default function Layer({
 	clampUltraWide = true,
-	displayOrder,
+	displayOrder = 1,
 	children,
 }: Readonly<LayerProps>): React.ReactNode {
 	return IS_EDIT ? (

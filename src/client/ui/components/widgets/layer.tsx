@@ -1,3 +1,4 @@
+import type { Binding } from "@rbxts/react";
 import React from "@rbxts/react";
 
 import Group from "client/ui/components/primitive/group";
@@ -40,7 +41,10 @@ export interface LayerProps extends React.PropsWithChildren {
  *
  * @see https://developer.roblox.com/en-us/api-reference/class/ScreenGui
  */
-export default function Layer({ displayOrder, children }: Readonly<LayerProps>): React.ReactNode {
+export default function Layer({
+	displayOrder = 1,
+	children,
+}: Readonly<LayerProps>): React.ReactNode {
 	return IS_EDIT ? (
 		<Group>{children}</Group>
 	) : (

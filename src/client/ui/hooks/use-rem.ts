@@ -28,7 +28,7 @@ const scaleFunctions = {
 	Vector2: (value: Vector2, rem: number): Vector2 => new Vector2(value.X * rem, value.Y * rem),
 };
 
-function useRemContext({ maximum = math.huge, minimum = 0 }: RemOptions = {}) {
+function useRemContext({ maximum = math.huge, minimum = 0 }: RemOptions = {}): number {
 	const rem = useContext(RemContext);
 	return math.clamp(rem, minimum, maximum);
 }
@@ -37,8 +37,10 @@ export function useRem(options?: RemOptions): RemFunction {
 	const rem = useRemContext(options);
 
 	const remFunction: RemFunction = <T>(value: T, mode: RemScaleMode = "unit"): T => {
-		const scale = scaleFunctions[typeOf(value) as never] as <T>(value: T, rem: number) => T;
+		const scale = scaleFunctions[typeOf(value) as never] as (value: T, rem: number) => T;
 
+		// TODO: Look into eslint rules for this line
+		// eslint-disable-next-line ts/no-unnecessary-condition, ts/strict-boolean-expressions -- Temp disable
 		if (scale) {
 			return mode === "unit" ? scale(value, rem) : scale(value, rem / DEFAULT_REM);
 		}

@@ -57,10 +57,11 @@ export default function ObjectViewport({
 
 		let model = object;
 		if (!model.IsA("Model")) {
+			// eslint-disable-next-line ts/no-unsafe-call -- Temp disable
 			model = Make("Model", {
 				Children: [object],
 				PrimaryPart: object as BasePart,
-			});
+			}) as Model;
 		}
 
 		model.Parent = viewport;

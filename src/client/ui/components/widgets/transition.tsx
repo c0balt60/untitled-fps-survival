@@ -38,20 +38,23 @@ export function Transition({
 	size = new UDim2(1, 0, 1, 0),
 	zIndex,
 	children,
-}: TransitionProps) {
+}: Readonly<TransitionProps>): React.ReactNode {
 	const [frame, setFrame] = useState<Frame>();
 	const [canvas, setCanvas] = useState<CanvasGroup>();
 
-	const container = useMemo(() => {
-		const container = new Instance("Frame");
-		container.Size = new UDim2(1, 0, 1, 0);
-		container.BackgroundTransparency = 1;
-		return container;
-	}, []);
+	// const container = useMemo(() => {
+	// 	const container = new Instance("Frame");
+	// 	container.Size = new UDim2(1, 0, 1, 0);
+	// 	container.BackgroundTransparency = 1;
+	// 	return container;
+	// }, []);
+	const container = new Instance("Frame");
+	container.Size = new UDim2(1, 0, 1, 0);
+	container.BackgroundTransparency = 1;
 
 	useEventListener(RunService.Heartbeat, () => {
 		const transparency = getBindingValue(groupTransparency) ?? 0;
-		const color = getBindingValue(groupColor) || palette.white;
+		const color = getBindingValue(groupColor) ?? palette.white;
 
 		pcall(() => {
 			container.Parent = transparency > EPSILON || color !== palette.white ? canvas : frame;
