@@ -2,11 +2,14 @@
 	"name": "untitled-fps-survival",
 	"version": "1.0.0",
 	"description": "Untitled first person scavenger game",
-	"keywords": [],
+	"keywords": [
+		"roblox",
+		"typescript"
+	],
 	"license": "ISC",
 	"author": "c0balt60",
-	"main": "index.js",
 	"type": "module",
+	"main": "index.js",
 	"scripts": {
 		"build": "rbxtsc",
 		"lint": "eslint",
@@ -30,6 +33,7 @@
 		"@rbxts/lapis": "catalog:",
 		"@rbxts/lapis-mockdatastore": "catalog:",
 		"@rbxts/log": "catalog:",
+		"@rbxts/make": "catalog:",
 		"@rbxts/object-utils": "catalog:",
 		"@rbxts/pretty-react-hooks": "catalog:",
 		"@rbxts/rbx-better-signal": "catalog:",
@@ -42,6 +46,7 @@
 		"@rbxts/sift": "catalog:",
 		"@rbxts/t": "catalog:",
 		"@rbxts/ui-labs": "catalog:",
+		"@rbxts/ui-scaler": "catalog:",
 		"rbxts-transform-debug": "catalog:"
 	},
 	"devDependencies": {
@@ -50,8 +55,6 @@
 		"@commitlint/types": "catalog:",
 		"@cspell/eslint-plugin": "catalog:",
 		"@eslint-react/eslint-plugin": "catalog:",
-		"@isentinel/dict-rbxts": "catalog:",
-		"@isentinel/dict-roblox": "catalog:",
 		"@isentinel/eslint-config": "catalog:",
 		"@isentinel/tsconfig": "catalog:",
 		"@rbxts/compiler-types": "catalog:",
@@ -59,11 +62,8 @@
 		"@typescript-eslint/eslint-plugin": "catalog:",
 		"@typescript-eslint/parser": "catalog:",
 		"eslint": "catalog:",
-		"eslint-config-prettier": "catalog:",
 		"eslint-plugin-pnpm": "catalog:",
-		"eslint-plugin-prettier": "catalog:",
 		"eslint-plugin-react-roblox-hooks": "catalog:",
-		"eslint-plugin-roblox-ts": "catalog:",
 		"husky": "catalog:",
 		"jiti": "catalog:",
 		"lint-staged": "catalog:",
@@ -73,5 +73,5 @@
 		"ts-plugin-sort-import-suggestions": "catalog:",
 		"typescript": "catalog:"
 	},
-	"packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67"
+	"packageManager": "pnpm@10.19.0"
 }

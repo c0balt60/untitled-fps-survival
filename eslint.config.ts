@@ -13,6 +13,7 @@ export default isentinel({
 			"onPhysics",
 			"onTick",
 		],
+
 		sortObjects: {
 			customGroups: {
 				id: "^id$",
@@ -47,13 +48,7 @@ export default isentinel({
 				selector: ["variable"],
 			},
 		],
-		// "import/order": "off",
-		"package-json/no-empty-fields": "off",
-		"package-json/order-properties": "off",
-		// "perfectionist": ["error"],
-		// "perfectionist/sort-imports": ["error"],
-		// "perfectionist/sort-named-imports": ["off"],
-		// "sort-imports": ["off"],
+		"jsdoc/require-description-complete-sentence": ["off"],
 	},
 	spellCheck: true,
 	type: "game",
