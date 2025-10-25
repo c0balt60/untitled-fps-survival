@@ -1,14 +1,13 @@
-import type { BindingOrValue } from "@rbxts/pretty-react-hooks";
-import type { PropsWithChildren } from "@rbxts/react";
 import React, { forwardRef } from "@rbxts/react";
 
-import type { AssetId } from "types/utils/roblox";
+import type { BindingValue } from "types/util/react";
+import type { AssetId } from "types/util/roblox";
 
-export interface ImageProps extends PropsWithChildren {
-	/** Optional corner radius */
-	CornerRadius?: BindingOrValue<UDim>;
+import type { FrameProps } from "./frame";
+
+export interface ImageProps extends FrameProps<ImageLabel> {
 	/** The image to display. */
-	Image: BindingOrValue<AssetId>;
+	Image: BindingValue<AssetId>;
 }
 
 /**
@@ -19,7 +18,7 @@ export interface ImageProps extends PropsWithChildren {
  * ```tsx
  * <ImageLabel
  * 	Image="rbxassetid://1234567890"
- * 	native={{
+ * 	Native={{
  * 		Size={new UDim2(0, 100, 0, 100)}
  * 	}}
  * />;
@@ -29,22 +28,21 @@ export interface ImageProps extends PropsWithChildren {
  *
  * @see https://developer.roblox.com/en-us/api-reference/class/ImageLabel
  */
-const Image = forwardRef(
-	({ CornerRadius, Image, children }: ImageProps, ref: React.Ref<ImageLabel>) => {
-		return (
-			<imagelabel
-				ref={ref}
-				AnchorPoint={new Vector2(0.5, 0.5)}
-				BackgroundTransparency={1}
-				Image={Image}
-				Position={new UDim2(0.5, 0, 0.5, 0)}
-				Size={new UDim2(1, 0, 1, 0)}
-			>
-				{CornerRadius ? <uicorner CornerRadius={CornerRadius} /> : undefined}
-				{children}
-			</imagelabel>
-		);
-	},
-);
+export const ImageLabel = forwardRef((props: Readonly<ImageProps>, ref: React.Ref<ImageLabel>) => {
+	const { CornerRadius, Image, Native, children } = props;
 
-export default Image;
+	return (
+		<imagelabel
+			ref={ref}
+			AnchorPoint={new Vector2(0.5, 0.5)}
+			BackgroundTransparency={1}
+			Image={Image}
+			Position={new UDim2(0.5, 0, 0.5, 0)}
+			Size={new UDim2(1, 0, 1, 0)}
+			{...Native}
+		>
+			{CornerRadius ? <uicorner CornerRadius={CornerRadius} /> : undefined}
+			{children}
+		</imagelabel>
+	);
+});

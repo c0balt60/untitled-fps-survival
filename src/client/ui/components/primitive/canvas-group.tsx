@@ -1,16 +1,8 @@
-/* eslint-disable roblox-ts/lua-truthiness */
-import type { BindingOrValue } from "@rbxts/pretty-react-hooks";
-import type { PropsWithChildren } from "@rbxts/react";
 import React, { forwardRef } from "@rbxts/react";
 
-import { Corner } from "client/ui/components/primitive/corner";
+import type { FrameProps } from "./frame";
 
-interface CanvasGroupProps extends PropsWithChildren {
-	/** The corner radius for the canvas group. */
-	CornerRadius: BindingOrValue<number>;
-	/** Whether the canvas group is visible. */
-	Visible: BindingOrValue<boolean>;
-}
+export type CanvasGroupProps = FrameProps<CanvasGroup>;
 
 /**
  * A wrapper around the `CanvasGroup` component, a GuiObject that renders
@@ -20,18 +12,17 @@ interface CanvasGroupProps extends PropsWithChildren {
  * @example
  *
  * ```tsx
- * <CanvasGroup native={{ Size: new UDim2(0, 100, 0, 100) }}>
+ * <CanvasGroup Native={{ Size: new UDim2(0, 100, 0, 100) }}>
  * ```
  *
  * @component
  *
  * @see https://developer.roblox.com/en-us/api-reference/class/CanvasGroup
  */
-const CanvasGroup = forwardRef(
-	(
-		{ CornerRadius, Visible = true, children }: Readonly<CanvasGroupProps>,
-		ref: React.Ref<CanvasGroup>,
-	) => {
+export const CanvasGroup = forwardRef(
+	(props: Readonly<CanvasGroupProps>, ref: React.Ref<CanvasGroup>) => {
+		const { CornerRadius, Native, children } = props;
+
 		return (
 			<canvasgroup
 				ref={ref}
@@ -39,13 +30,11 @@ const CanvasGroup = forwardRef(
 				BackgroundTransparency={1}
 				BorderSizePixel={0}
 				Position={new UDim2(0.5, 0, 0.5, 0)}
-				Visible={Visible}
+				{...Native}
 			>
-				{CornerRadius ? <Corner Radius={CornerRadius} /> : undefined}
+				{CornerRadius ? <uicorner key="corner" CornerRadius={CornerRadius} /> : undefined}
 				{children}
 			</canvasgroup>
 		);
 	},
 );
-
-export default CanvasGroup;

@@ -1,11 +1,13 @@
-import type { BindingOrValue } from "@rbxts/pretty-react-hooks";
-import type { PropsWithChildren, Ref } from "@rbxts/react";
+import type { Ref } from "@rbxts/react";
 import React, { forwardRef } from "@rbxts/react";
 
-interface FrameProps extends PropsWithChildren {
+import type { BindingValue } from "types/util/react";
+
+export interface FrameProps<T extends Instance = Frame> extends React.PropsWithChildren {
 	/** An optional helper that rounds the corners of the frame. */
-	CornerRadius?: BindingOrValue<UDim>;
+	CornerRadius?: BindingValue<UDim>;
 	/** The default properties of the component. */
+	Native?: Partial<React.InstanceProps<T>>;
 }
 
 /**
@@ -17,7 +19,7 @@ interface FrameProps extends PropsWithChildren {
  * @example
  *
  * ```tsx
- * <Frame cornerRadius={new UDim(0, 8)} native={{ Size: new UDim2(0, 100, 0, 100) }}>
+ * <Frame CornerRadius={new UDim(0, 8)} Native={{ Size: new UDim2(0, 100, 0, 100) }}>
  * ```
  *
  * @note A frame defaults to being centered in the parent container (anchor point and
@@ -27,19 +29,19 @@ interface FrameProps extends PropsWithChildren {
  *
  * @see https://create.roblox.com/docs/reference/engine/classes/Frame
  */
-const Frame = forwardRef(({ CornerRadius, children }: Readonly<FrameProps>, ref: Ref<Frame>) => {
-	return (
-		<frame
-			ref={ref}
-			AnchorPoint={new Vector2(0.5, 0.5)}
-			BorderSizePixel={0}
-			Position={new UDim2(0.5, 0, 0.5, 0)}
-			Size={new UDim2(1, 0, 1, 0)}
-		>
-			{children}
-			{CornerRadius ? <uicorner CornerRadius={CornerRadius} /> : undefined}
-		</frame>
-	);
-});
-
-export default Frame;
+export const Frame = forwardRef(
+	({ CornerRadius, Native, children }: Readonly<FrameProps>, ref: Ref<Frame>) => {
+		return (
+			<frame
+				ref={ref}
+				AnchorPoint={new Vector2(0.5, 0.5)}
+				Position={new UDim2(0.5, 0, 0.5, 0)}
+				Size={new UDim2(1, 0, 1, 0)}
+				{...Native}
+			>
+				{children}
+				{CornerRadius ? <uicorner CornerRadius={CornerRadius} /> : undefined}
+			</frame>
+		);
+	},
+);

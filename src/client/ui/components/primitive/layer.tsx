@@ -1,8 +1,10 @@
 import React from "@rbxts/react";
 
-import Group from "client/ui/components/primitive/group";
-import UltraWideContainer from "client/ui/components/utils/ultra-wide-container";
-import { IS_EDIT } from "shared/constants/game";
+import { $NODE_ENV } from "rbxts-transform-env";
+import { IS_EDIT } from "shared/constants";
+
+import { UltraWideContainer } from "../ultra-wide-container";
+import { Group } from "./group";
 
 export interface LayerProps extends React.PropsWithChildren {
 	/**
@@ -10,9 +12,9 @@ export interface LayerProps extends React.PropsWithChildren {
 	 *
 	 * @default true
 	 */
-	clampUltraWide?: boolean;
+	ClampUltraWide?: boolean;
 	/** The display order of the layer. */
-	displayOrder?: number;
+	DisplayOrder?: number | undefined;
 }
 
 /**
@@ -25,7 +27,7 @@ export interface LayerProps extends React.PropsWithChildren {
  * @example
  *
  * ```tsx
- * <Layer displayOrder={1}>
+ * <Layer DisplayOrder={1}>
  * 	<TextButton Text="Button 1" />
  * 	<TextButton Text="Button 2" />
  * </Layer>;
@@ -33,7 +35,7 @@ export interface LayerProps extends React.PropsWithChildren {
  *
  * @param props - The component props.
  * @returns The rendered Layer component.
- * @note By default, the `clampUltraWide` property is set to `true`. This means
+ * @note By default, the `ClampUltraWide` property is set to `true`. This means
  * that the layer will be constrained to a 16:9 aspect ratio on ultra wide
  * monitors. If you want to disable this behavior, set the property to `false`.
  *
@@ -41,23 +43,27 @@ export interface LayerProps extends React.PropsWithChildren {
  *
  * @see https://developer.roblox.com/en-us/api-reference/class/ScreenGui
  */
-export default function Layer({
-	clampUltraWide = true,
-	displayOrder = 1,
+export function Layer({
+	ClampUltraWide = true,
+	DisplayOrder = 0,
 	children,
 }: Readonly<LayerProps>): React.ReactNode {
-	return IS_EDIT ? (
-		<Group>
-			{clampUltraWide ? <UltraWideContainer>{children}</UltraWideContainer> : children}
+	return $NODE_ENV === "development" && IS_EDIT ? (
+		<Group
+			Native={{
+				ZIndex: DisplayOrder,
+			}}
+		>
+			{ClampUltraWide ? <UltraWideContainer>{children}</UltraWideContainer> : children}
 		</Group>
 	) : (
 		<screengui
-			DisplayOrder={displayOrder}
+			DisplayOrder={DisplayOrder}
 			IgnoreGuiInset={true}
 			ResetOnSpawn={false}
 			ZIndexBehavior="Sibling"
 		>
-			{clampUltraWide ? <UltraWideContainer>{children}</UltraWideContainer> : children}
+			{ClampUltraWide ? <UltraWideContainer>{children}</UltraWideContainer> : children}
 		</screengui>
 	);
 }
